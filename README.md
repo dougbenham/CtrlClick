@@ -5,3 +5,5 @@ Converts `CTRL+Click` to double-click (aka `select word`) for any Scintilla-base
 The goal is to be able to `CTRL+Click` to select a word, then without releasing `CTRL` you press `C` to copy, then click to select some other word, then press `V` to paste and then finally release `CTRL`. This workflow feels really good to use, so its a shame these editors don't support it natively.
 
 The app has a tiny footprint and runs silently in the background monitoring for any CTRL+Click on a window that matches the filter. It prevents that click and provides its own behavior (double click with no CTRL held). For best efficiency, you should use the included powershell script (in the release) to add the app to your startup.
+
+<a href='https://ko-fi.com/dougbenham' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
