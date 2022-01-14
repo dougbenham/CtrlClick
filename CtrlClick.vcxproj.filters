@@ -30,7 +30,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ScintillaCtrlClick.cpp">
+    <ClCompile Include="CtrlClick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
