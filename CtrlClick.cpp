@@ -24,10 +24,6 @@ LRESULT __stdcall HookCallback(int nCode, WPARAM wParam, LPARAM lParam)
 			{
 				if (wParam == WM_LBUTTONDOWN)
 				{
-					return 1; // don't allow mouse down with CTRL held
-				}
-				else if (wParam == WM_LBUTTONUP)
-				{
 					// release CTRL
 					INPUT input;
 					input.type = INPUT_KEYBOARD;
@@ -35,21 +31,20 @@ LRESULT __stdcall HookCallback(int nCode, WPARAM wParam, LPARAM lParam)
 					input.ki.dwFlags = KEYEVENTF_KEYUP;
 					SendInput(1, &input, sizeof(input));
 
-					// double click in place
+					// click + down in place
 					POINT client;
 					client.x = msStruct.pt.x;
 					client.y = msStruct.pt.y;
 					ScreenToClient(hWnd, &client);
-					const auto mouseLParam = MAKELPARAM(client.x, client.y);							
+					const auto mouseLParam = MAKELPARAM(client.x, client.y);
 					SendMessage(hWnd, WM_LBUTTONDOWN, 0, mouseLParam);
 					SendMessage(hWnd, WM_LBUTTONUP, 0, mouseLParam);
 					SendMessage(hWnd, WM_LBUTTONDOWN, 0, mouseLParam);
-					SendMessage(hWnd, WM_LBUTTONUP, 0, mouseLParam);
 
 					// press CTRL
 					input.ki.dwFlags = 0;
 					SendInput(1, &input, sizeof(input));
-					return 1; // don't allow this current mouse up to be processed
+					return 1; // don't allow this current mouse down to be processed
 				}
 			}
 		}
